@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voiceflow Embedded Chat Test</title>
+  <!-- For basic styling (optional) -->
+  <style>
+    /* Just to make container visible and ensure there's space */
+    #voiceflow-container {
+      border: 1px solid #ccc;
+      min-height: 600px;
+      width: 50%;
+      margin: 2rem auto; /* center on page */
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Embedded Chat Test</h1>
+  <p>If the chat loads successfully, you should see it below in the gray box.</p>
+
+  <!-- The embed container with an ID -->
+  <aside id="voiceflow-container">
+    <p>Loading Voiceflow chat...</p>
+  </aside>
+
+  <!-- Voiceflow Script placed AFTER the container -->
+  <script type="text/javascript">
+    (function(d, t) {
+      const v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6780d3868259b83ec49aa474' }, // Replace with your project if needed
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          render: {
+            mode: 'embedded',
+            container: '#voiceflow-container'
+          }
+        });
+      };
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+      v.type = "text/javascript";
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+
+</body>
+</html>
